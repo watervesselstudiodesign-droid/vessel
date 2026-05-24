@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title, description, and theme colour are set from content.js.
+       The values below are fallbacks for the brief moment before
+       content.js loads, and for crawlers that ignore JavaScript. -->
+  <title>Vessel</title>
+  <meta name="description" content="A quieter way to drink." />
+  <meta name="theme-color" content="#F2EFE8" />
+
+  <!-- Type. Loaded from Google Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..500,30..100;1,9..144,300..500,30..100&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles. Edit styles.css to change design tokens. -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════
+       NOTE TO EDITORS
+       ► To change WORDS on the page          →  edit  content.js
+       ► To change COLOURS, TYPE, SPACING     →  edit  styles.css
+       ► To change IMAGES                     →  put files in /assets/
+                                                 and update content.js
+       The markup below is structure only. You shouldn't need to
+       touch this file unless you're rearranging sections.
+       ════════════════════════════════════════════════════════════ -->
+
+
+  <!-- ── SECTION 0 — THE FOLD ───────────────────────────────── -->
+  <header class="fold" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a href="#top" class="wordmark" data-bind="meta.brandName"></a>
+      <a href="#reserve" class="nav-link" data-bind="nav.link"></a>
+    </nav>
+
+    <div class="fold__content">
+      <span class="eyebrow" data-bind="fold.eyebrow"></span>
+
+      <h1 class="proposition">
+        <span data-bind="fold.propositionLineOne"></span><br />
+        <span data-bind="fold.propositionLineTwo"></span>
+      </h1>
+
+      <form class="email-form" data-form="fold" novalidate>
+        <label for="email-fold" class="visually-hidden">Email address</label>
+        <input
+          type="email"
+          id="email-fold"
+          name="email"
+          autocomplete="email"
+          required
+          data-bind-placeholder="fold.emailPlaceholder"
+        />
+        <button type="submit" class="btn-text">
+          <span data-bind="fold.ctaText"></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="form-message" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="fold__meta">
+      <span data-bind="fold.metaLeft"></span>
+      <span data-bind="fold.metaRight"></span>
+    </div>
+  </header>
+
+
+  <!-- ── SECTION 1 — HERO IMAGE ─────────────────────────────── -->
+  <section class="hero-image" aria-label="Hero image">
+    <figure>
+      <img data-bind-image="heroImage" loading="eager" decoding="async" alt="" />
+      <figcaption data-bind="heroImage.caption"></figcaption>
+    </figure>
+  </section>
+
+
+  <!-- ── SECTION 2 — RECOGNITION SENTENCE ───────────────────── -->
+  <section class="recognition" aria-label="A small recognition">
+    <p>
+      <span data-bind="recognition.lineOne"></span><br />
+      <span data-bind="recognition.lineTwo"></span><br />
+      <em data-bind="recognition.emphasis"></em>
+    </p>
+  </section>
+
+
+  <!-- ── SECTION 3 — THESIS ─────────────────────────────────── -->
+  <section class="thesis" aria-label="A few notes">
+    <div class="thesis__grid">
+      <aside class="thesis__index">
+        <span class="eyebrow" data-bind="thesis.eyebrow"></span>
+        <span class="thesis__index-num" data-bind="thesis.indexLabel"></span>
+      </aside>
+
+      <!-- The thesis entries below are generated from
+           content.thesis.entries — one <article> per item. -->
+      <div class="thesis__columns" data-bind-list="thesis.entries">
+        <template>
+          <article class="thesis__entry">
+            <h2 class="thesis__heading"><em data-bind-item="heading"></em></h2>
+            <p data-bind-item="body"></p>
+          </article>
+        </template>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── SECTION 4 — MATERIAL CLOSE-UP ──────────────────────── -->
+  <section class="materials" aria-label="Materials, in detail">
+    <figure class="materials__primary">
+      <img data-bind-image="materials.primary" loading="lazy" decoding="async" alt="" />
+    </figure>
+
+    <div class="materials__column">
+      <figure class="materials__secondary">
+        <img data-bind-image="materials.secondary" loading="lazy" decoding="async" alt="" />
+      </figure>
+
+      <aside class="materials__caption">
+        <span class="eyebrow" data-bind="materials.captionLabel"></span>
+        <p data-bind="materials.captionBody"></p>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- ── SECTION 5 — RESERVE ────────────────────────────────── -->
+  <section class="reserve" id="reserve" aria-label="Reserve">
+    <div class="reserve__inner">
+      <span class="eyebrow" data-bind="reserve.eyebrow"></span>
+      <p class="reserve__lede" data-bind="reserve.lede"></p>
+
+      <form class="email-form email-form--reserve" data-form="reserve" novalidate>
+        <label for="email-reserve" class="visually-hidden">Email address</label>
+        <input
+          type="email"
+          id="email-reserve"
+          name="email"
+          autocomplete="email"
+          required
+          data-bind-placeholder="reserve.emailPlaceholder"
+        />
+        <button type="submit" class="btn-text">
+          <span data-bind="reserve.ctaText"></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="form-message" aria-live="polite"></p>
+      </form>
+
+      <p class="reserve__note" data-bind="reserve.note"></p>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="site-footer__row">
+      <span class="wordmark wordmark--footer" data-bind="meta.brandName"></span>
+      <span data-bind="meta.copyright"></span>
+    </div>
+    <div class="site-footer__row site-footer__row--muted">
+      <span data-bind="footer.tagline"></span>
+      <a data-bind-mailto="meta.contactEmail"></a>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CONTENT LOADER & RENDERER
+       This is wiring, not content. It reads content.js and fills
+       in every element marked with a data-bind* attribute.
+       Don't edit unless you're a developer.
+       ════════════════════════════════════════════════════════════ -->
+  <script src="content.js"></script>
+  <script>
+    (function () {
+      var C = window.content;
+      if (!C) {
+        console.error("Vessel: content.js failed to load.");
+        return;
+      }
+
+      // Resolve a dotted path like "fold.proposition" → C.fold.proposition
+      function get(path) {
+        return path.split(".").reduce(function (o, k) {
+          return o == null ? undefined : o[k];
+        }, C);
+      }
+
+      // Meta tags
+      if (C.meta) {
+        if (C.meta.pageTitle) document.title = C.meta.pageTitle;
+        var d = document.querySelector('meta[name="description"]');
+        if (d && C.meta.pageDescription) d.setAttribute("content", C.meta.pageDescription);
+        var t = document.querySelector('meta[name="theme-color"]');
+        if (t && C.meta.themeColor) t.setAttribute("content", C.meta.themeColor);
+      }
+
+      // Plain text
+      document.querySelectorAll("[data-bind]").forEach(function (el) {
+        var v = get(el.getAttribute("data-bind"));
+        if (typeof v === "string") el.textContent = v;
+      });
+
+      // Input placeholders
+      document.querySelectorAll("[data-bind-placeholder]").forEach(function (el) {
+        var v = get(el.getAttribute("data-bind-placeholder"));
+        if (typeof v === "string") el.setAttribute("placeholder", v);
+      });
+
+      // Images
+      document.querySelectorAll("[data-bind-image]").forEach(function (el) {
+        var data = get(el.getAttribute("data-bind-image"));
+        if (!data) return;
+        if (data.src) el.setAttribute("src", data.src);
+        if (data.alt) el.setAttribute("alt", data.alt);
+      });
+
+      // mailto links
+      document.querySelectorAll("[data-bind-mailto]").forEach(function (el) {
+        var v = get(el.getAttribute("data-bind-mailto"));
+        if (typeof v === "string") {
+          el.setAttribute("href", "mailto:" + v);
+          el.textContent = v;
+        }
+      });
+
+      // Repeating lists (e.g. thesis entries)
+      document.querySelectorAll("[data-bind-list]").forEach(function (container) {
+        var items = get(container.getAttribute("data-bind-list"));
+        var tmpl = container.querySelector("template");
+        if (!Array.isArray(items) || !tmpl) return;
+        items.forEach(function (item) {
+          var clone = tmpl.content.cloneNode(true);
+          clone.querySelectorAll("[data-bind-item]").forEach(function (el) {
+            var key = el.getAttribute("data-bind-item");
+            if (item[key] != null) el.textContent = item[key];
+          });
+          container.appendChild(clone);
+        });
+      });
+
+      // Forms
+      var action = (C.meta && C.meta.formAction) || "";
+      document.querySelectorAll("form[data-form]").forEach(function (form) {
+        if (action) {
+          form.setAttribute("action", action);
+          form.setAttribute("method", "POST");
+        }
+        form.addEventListener("submit", function (e) {
+          var input = form.querySelector('input[type="email"]');
+          var msg   = form.querySelector(".form-message");
+          if (!input || !input.checkValidity()) {
+            e.preventDefault();
+            if (msg) msg.textContent = (C.meta && C.meta.formMessageInvalid) || "Please enter a valid email.";
+            return;
+          }
+          if (!action) {
+            // No backend configured — show local thank-you.
+            e.preventDefault();
+            input.value = "";
+            if (msg) msg.textContent = (C.meta && C.meta.formMessageSuccess) || "Thank you. We have your address.";
+          }
+          // Otherwise: let the form submit normally to your endpoint.
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
