@@ -141,7 +141,7 @@
       <span class="eyebrow" data-bind="reserve.eyebrow"></span>
       <p class="reserve__lede" data-bind="reserve.lede"></p>
 
-      <form class="email-form email-form--reserve" data-form="reserve" novalidate>
+      <form id="form-reserve" class="email-form email-form--reserve" data-form="reserve" novalidate>
         <label for="email-reserve" class="visually-hidden">Email address</label>
         <input
           type="email"
@@ -158,6 +158,18 @@
         <p class="form-message" aria-live="polite"></p>
       </form>
 
+      <div class="reserve__question">
+        <label for="answer-reserve" class="reserve__question-label" data-bind="reserve.questionLabel"></label>
+        <textarea
+          id="answer-reserve"
+          name="answer"
+          rows="3"
+          form="form-reserve"
+          data-bind-placeholder="reserve.questionPlaceholder"
+        ></textarea>
+      </div>
+
+      <p class="reserve__price-note" data-bind="reserve.priceNote"></p>
       <p class="reserve__note" data-bind="reserve.note"></p>
     </div>
   </section>
@@ -171,6 +183,7 @@
     </div>
     <div class="site-footer__row site-footer__row--muted">
       <span data-bind="footer.tagline"></span>
+      <span data-bind="footer.origin"></span>
       <a data-bind-mailto="meta.contactEmail"></a>
     </div>
   </footer>
@@ -270,6 +283,10 @@
             // No backend configured — show local thank-you.
             e.preventDefault();
             input.value = "";
+            // Also clear any textarea associated with this form (e.g. the
+            // optional reserve question), so a second visit is clean.
+            var related = document.querySelectorAll('textarea[form="' + form.id + '"]');
+            related.forEach(function (t) { t.value = ""; });
             if (msg) msg.textContent = (C.meta && C.meta.formMessageSuccess) || "Thank you. We have your address.";
           }
           // Otherwise: let the form submit normally to your endpoint.
